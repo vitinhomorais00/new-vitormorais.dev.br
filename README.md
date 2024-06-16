@@ -10,3 +10,7 @@ Currently, two official plugins are available:
 # How to start project?
 - Go to project path
 - npm run dev
+
+# How to deploy diff project?
+- Go to project path
+- npm run deploy
