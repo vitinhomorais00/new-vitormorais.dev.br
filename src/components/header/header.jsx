@@ -1,22 +1,30 @@
-import './styles/header.css'; // Assuming you'll add some CSS for styling
+import { useState } from 'react'
+import './styles/header.css';
+import logo from './assets/logo.png';
 
 const Header = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  const handleToggle = () => {
+    setIsMobile(!isMobile);
+  };
+
   return (
     <header className="header">
-      <div className="header__logo">
-        <h1>My Website</h1>
+      <div className="logo">
+        <img src={logo} alt="Vitormorais.Dev Logo" />
       </div>
-      <nav className="header__nav">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/contact">Contact</a></li> 
+      <nav className={`nav ${isMobile ? 'mobile-nav' : ''}`}>
+        <ul className={`nav-links ${isMobile ? 'nav-links-mobile' : ''}`}>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
+        <button className="mobile-menu-icon" onClick={handleToggle}>
+          {isMobile ? 'b' : 'a'}
+        </button>
       </nav>
-      <div className="header__user-info">
-        <span>Welcome, User!</span>
-        <button className="header__logout-button">Logout</button>
-      </div>
     </header>
   );
 };
